@@ -22,25 +22,20 @@ class Animal:
 class Cat(Animal):
     def __init__(self,
                  name: str,
-                 appetite: int = 3,
                  is_hungry: bool = True) -> None:
-        super().__init__(name, appetite, is_hungry)
+        super().__init__(name, 3, is_hungry)
 
     def catch_mouse(self) -> None:
         print("The hunt began!")
 
 
 class Dog(Animal):
-    def __init__(self, name: str, appetite: int = 7, is_hungry: bool = True) -> None:
-        super().__init__(name, appetite, is_hungry)
+    def __init__(self, name: str, is_hungry: bool = True) -> None:
+        super().__init__(name, 7, is_hungry)
 
-    def bring_slippers(self) -> str:
+    def bring_slippers(self) -> None:
         print("The slippers delivered!")
 
 
 def feed_animals(animals: list) -> int:
-    sum = 0
-    for animal_one in animals:
-        if animal_one.is_hungry:
-            sum += Animal.feed(animal_one)
-    return sum
+    return sum(animal.feed() for animal in animals)
